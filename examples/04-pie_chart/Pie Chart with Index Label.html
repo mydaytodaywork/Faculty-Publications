@@ -1,0 +1,62 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<script type="text/javascript">
+	
+function onClick2(e) {
+	window.open('index.php?author='+e.dataPoint.x,'_self');
+}
+
+	
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer",
+	{
+		theme: "theme2",
+		title:{
+			text: "Gaming Consoles Sold in 2012"
+		},
+		animationEnabled: true,
+        colorSet: "greenShades",
+		legend:{
+			verticalAlign: "center",
+			horizontalAlign: "right",
+			fontSize: 15,
+			cursor: "pointer" ,
+			itemclick:onClick2,
+			fontFamily: "Helvetica"        
+		},
+
+		data: [
+		{
+			click: function(e){ 
+  	 			window.open("search.php?publisher="+e.dataSeries.x,'_self');
+  			},
+			
+			
+			type: "pie",
+			showInLegend: true,
+			toolTipContent: "{y} - #percent %",
+			yValueFormatString: "#0.#,,. Million",
+			legendText: "{indexLabel}",
+			dataPoints: [
+				{  y: 4181563, x:"PlayStation3" , indexLabel: "PlayStation 3" },
+				{  y: 2175498, x:"Wii" , indexLabel: "Wii" },
+				{  y: 3125844, x:"Xbox", indexLabel: "Xbox 360" },
+				{  y: 1176121, indexLabel: "Nintendo DS"},
+				{  y: 1727161, indexLabel: "PSP" },
+				{  y: 4303364, indexLabel: "Nintendo 3DS"},
+				{  y: 1717786, indexLabel: "PS Vita"}
+			]
+		}
+		]
+	});
+	chart.render();
+}
+	</script>
+	<script src="../../canvasjs.min.js"></script>
+	<title>CanvasJS Example</title>
+</head>
+<body>
+	<div id="chartContainer" style="height: 400px; width: 80%;"></div>
+</body>
+</html>
